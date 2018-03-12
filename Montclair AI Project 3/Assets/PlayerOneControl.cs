@@ -10,12 +10,14 @@ public class PlayerOneControl : MonoBehaviour
 	public Vector3 jump;
 	public float jumpForce = 2.0f;
 	public bool isGrounded = true;
+	public int health;
 
 	/// <summary>
 	/// Intialization
 	/// </summary>
 	void Start()
 	{
+		health = (int) Random.Range(1.0f, 99.0f);
 		rigidBody = GetComponent<Rigidbody2D>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
 	}
@@ -25,7 +27,7 @@ public class PlayerOneControl : MonoBehaviour
 	/// </summary>
 	void FixedUpdate()
 	{
-		if (transform.position.y < -2.6)
+		if (transform.position.y < -2.71)
 		{
 			isGrounded = true;
 		}
