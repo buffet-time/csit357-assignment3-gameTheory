@@ -228,9 +228,9 @@ GameObject:
   - component: {fileID: 284193337}
   - component: {fileID: 284193338}
   - component: {fileID: 284193339}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerOne
-  m_TagString: Untagged
+  m_TagString: PlayerOne
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -354,6 +354,8 @@ MonoBehaviour:
   jumpForce: 2
   isGrounded: 1
   health: 0
+  player: {fileID: 202547265}
+  playerOne: {fileID: 284193334}
 --- !u!1 &314621546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,9 +1079,9 @@ GameObject:
   - component: {fileID: 2130326882}
   - component: {fileID: 2130326881}
   - component: {fileID: 2130326884}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerTwo
-  m_TagString: Untagged
+  m_TagString: PlayerTwo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

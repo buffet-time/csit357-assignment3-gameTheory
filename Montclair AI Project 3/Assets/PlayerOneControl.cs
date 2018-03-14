@@ -12,6 +12,9 @@ public class PlayerOneControl : MonoBehaviour
 	public bool isGrounded = true;
 	public int health;
 	private bool punching = false;
+	public GameObject player;
+	public GameObject playerOne;
+	private PlayerTwoControl playerTwoControl;
 
 	/// <summary>
 	/// Intialization
@@ -21,6 +24,20 @@ public class PlayerOneControl : MonoBehaviour
 		health = (int) Random.Range(1.0f, 99.0f);
 		rigidBody = GetComponent<Rigidbody2D>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
+	}
+
+	/// <summary>
+	/// For clarity: collision.collider is what the bullet is colliding with
+	///            : collision.othercollider is the bullet
+	/// </summary>
+	/// <param name="collision"></param>
+	void OnCollisionEnter2D(Collision2D collision)
+	{
+		if ( collision.gameObject.CompareTag("PlayerTwo") && punching)
+		{
+			playerTwoControl = player.GetComponentInChildren<PlayerTwoControl>();
+			playerTwoControl.health -= (int) Random.Range(5.0f, 40.0f);
+		}
 	}
 	
 	/// <summary>
@@ -47,27 +64,22 @@ public class PlayerOneControl : MonoBehaviour
 		}
         if (!punching && Input.GetKeyDown(KeyCode.Z)) 
 		{
-        	StartCoroutine(Punch(0.5f, 1.25f, transform.forward));
+        	StartCoroutine(Punch());
         }
 	}
 
-	IEnumerator Punch(float time, float distance, Vector3 direction) 
+	IEnumerator Punch() 
 	{
+		BoxCollider2D b = playerOne.GetComponent<Collider2D>() as BoxCollider2D;
+
 		punching = true;
+		b.size = new Vector2(3.0f, 3.6f);
+		print("extended size");
 
-		float timer = 0.0f;
-		Vector3 orgPos = transform.position;
-		direction.Normalize();
-
-		while (timer <= time) 
-		{
-			Debug.Log("----");
-			transform.position = orgPos + (Mathf.Sin(timer / time * Mathf.PI) + 1.0f) * direction;
-			yield return null;
-			timer += Time.deltaTime;
-		}
-		transform.position = orgPos;
-
+		yield return new WaitForSeconds(0.1f);
+		
 		punching = false;
-		}
+		b.size = new Vector2(2.36f, 3.6f);
+		print("retracted size");
+	}
 }
