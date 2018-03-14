@@ -1,16 +1,37 @@
 # =============== #
 # Unity generated #
 # =============== #
-[Tt]emp/
-[Oo]bj/
-[Bb]uild
-/[Bb]uilds/
-/[Ll]ibrary/
-sysinfo.txt
-*.stackdump
-/Assets/AssetStoreTools*
-*.apk
-*.unitypackage
+[Bb]in
+[Ll]ibrary/
+[Dd]ebug*/
+[Rr]elease*/
+Builds/
+/Builds
+ipch/
+/ipch
+Library/
+/Library
+obj/
+/obj
+Temp/
+/Temp
+UWP/
+/UWP
+WindowsStore/
+/WindowsStore
+WS/
+/WS
+UnityVS/
+UnityVS.meta
+/*.dwlt
+
+# Visual Studio Code 
+/.vscode
+.vscode
+
+# Visual Studio 
+/.vs
+.vs
  
 # ===================================== #
 # Visual Studio / MonoDevelop generated #
@@ -29,6 +50,8 @@ sysinfo.txt
 .consulo/
 /*.tmp
 /*.svd
+
+
  
 # ============ #
 # OS generated #

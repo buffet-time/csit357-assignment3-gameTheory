@@ -11,6 +11,7 @@ public class PlayerOneControl : MonoBehaviour
 	public float jumpForce = 2.0f;
 	public bool isGrounded = true;
 	public int health;
+	private bool punching = false;
 
 	/// <summary>
 	/// Intialization
@@ -44,5 +45,29 @@ public class PlayerOneControl : MonoBehaviour
 			rigidBody.AddForce(jump * jumpForce, ForceMode2D.Impulse);
 			isGrounded = false;
 		}
+        if (!punching && Input.GetKeyDown(KeyCode.Z)) 
+		{
+        	StartCoroutine(Punch(0.5f, 1.25f, transform.forward));
+        }
 	}
+
+	IEnumerator Punch(float time, float distance, Vector3 direction) 
+	{
+		punching = true;
+
+		float timer = 0.0f;
+		Vector3 orgPos = transform.position;
+		direction.Normalize();
+
+		while (timer <= time) 
+		{
+			Debug.Log("----");
+			transform.position = orgPos + (Mathf.Sin(timer / time * Mathf.PI) + 1.0f) * direction;
+			yield return null;
+			timer += Time.deltaTime;
+		}
+		transform.position = orgPos;
+
+		punching = false;
+		}
 }
