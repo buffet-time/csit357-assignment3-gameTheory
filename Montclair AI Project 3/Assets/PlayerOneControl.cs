@@ -45,7 +45,7 @@ public class PlayerOneControl : MonoBehaviour
 	/// </summary>
 	void FixedUpdate()
 	{
-		if (transform.position.y < -2.71)
+		if (transform.position.y < -1.8)
 		{
 			isGrounded = true;
 		}
@@ -73,13 +73,13 @@ public class PlayerOneControl : MonoBehaviour
 		BoxCollider2D b = playerOne.GetComponent<Collider2D>() as BoxCollider2D;
 
 		punching = true;
-		b.size = new Vector2(3.0f, 3.6f);
+		b.size = new Vector2(1f, 0.6644267f);
 		print("extended size");
 
 		yield return new WaitForSeconds(0.1f);
 		
 		punching = false;
-		b.size = new Vector2(2.36f, 3.6f);
+		b.size = new Vector2(0.5150453f, 0.6644267f);
 		print("retracted size");
 	}
 }

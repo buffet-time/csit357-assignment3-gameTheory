@@ -27,7 +27,7 @@ public class PlayerTwoControl : MonoBehaviour
 	/// </summary>
 	void FixedUpdate()
 	{
-		if (transform.position.y < -2.71)
+		if (transform.position.y < -1.8)
 		{
 			isGrounded = true;
 		}
