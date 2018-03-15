@@ -51,10 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlayerOneControl.cs" />
-     <Compile Include="Assets\PlayerTwoControl.cs" />
-     <Compile Include="Assets\UpdatePlayerOneHp.cs" />
-     <Compile Include="Assets\UpdatePlayerTwoHp.cs" />
+     <Compile Include="Assets\Scripts\PlayerOneControl.cs" />
+     <Compile Include="Assets\Scripts\PlayerTwoControl.cs" />
+     <Compile Include="Assets\Scripts\UpdatePlayerOneHp.cs" />
+     <Compile Include="Assets\Scripts\UpdatePlayerTwoHp.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
