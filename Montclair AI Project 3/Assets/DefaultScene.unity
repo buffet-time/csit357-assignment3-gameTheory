@@ -1205,6 +1205,8 @@ MonoBehaviour:
   jumpForce: 2
   isGrounded: 1
   health: 0
+  player: {fileID: 202547265}
+  playerTwo: {fileID: 2130326879}
 --- !u!1 &2138370374
 GameObject:
   m_ObjectHideFlags: 0

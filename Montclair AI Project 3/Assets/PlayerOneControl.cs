@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody))]
 
 public class PlayerOneControl : MonoBehaviour 
@@ -16,9 +17,6 @@ public class PlayerOneControl : MonoBehaviour
 	public GameObject playerOne;
 	private PlayerTwoControl playerTwoControl;
 
-	/// <summary>
-	/// Intialization
-	/// </summary>
 	void Start()
 	{
 		health = (int) Random.Range(1.0f, 99.0f);
@@ -26,11 +24,6 @@ public class PlayerOneControl : MonoBehaviour
         jump = new Vector3(0.0f, 2.0f, 0.0f);
 	}
 
-	/// <summary>
-	/// For clarity: collision.collider is what the bullet is colliding with
-	///            : collision.othercollider is the bullet
-	/// </summary>
-	/// <param name="collision"></param>
 	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if ( collision.gameObject.CompareTag("PlayerTwo") && punching)
@@ -39,12 +32,13 @@ public class PlayerOneControl : MonoBehaviour
 			playerTwoControl.health -= (int) Random.Range(5.0f, 40.0f);
 		}
 	}
-	
-	/// <summary>
-	/// Fixeds the update.
-	/// </summary>
+
 	void FixedUpdate()
 	{
+		if (health <= 0)
+		{
+			StartCoroutine(Quit());
+		}
 		if (transform.position.y < -1.8)
 		{
 			isGrounded = true;
@@ -64,6 +58,12 @@ public class PlayerOneControl : MonoBehaviour
 		}
         if (!punching && Input.GetKeyDown(KeyCode.Z)) 
 		{
+			// start punch animation here
+        	StartCoroutine(Punch());
+        }
+        if (!punching && Input.GetKeyDown(KeyCode.X)) 
+		{
+			// start kick animation here
         	StartCoroutine(Punch());
         }
 	}
@@ -74,12 +74,35 @@ public class PlayerOneControl : MonoBehaviour
 
 		punching = true;
 		b.size = new Vector2(1f, 0.6644267f);
-		print("extended size");
 
 		yield return new WaitForSeconds(0.1f);
 		
 		punching = false;
 		b.size = new Vector2(0.5150453f, 0.6644267f);
-		print("retracted size");
+	}
+
+	IEnumerator Quit()
+	{
+		// add ui element that say player 1 won
+		float random = Random.Range(0f, 10.0f);
+		if ( random <= 5f)
+		{
+			//oneWon.enabled = true;
+		}
+		else 
+		{
+			//twoWon.enabled = true;
+		}
+
+		yield return new WaitForSeconds(5f);
+
+		// quit
+		#if UNITY_EDITOR
+			UnityEditor.EditorApplication.isPlaying = false;
+
+		#else 
+			Application.Quit();
+
+		#endif
 	}
 }
