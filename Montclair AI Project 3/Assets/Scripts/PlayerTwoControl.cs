@@ -71,17 +71,17 @@ public class PlayerTwoControl : MonoBehaviour
 
 	IEnumerator Attack(string firstTrigger, string secondTrigger) 
 	{
-		BoxCollider2D b = playerTwo.GetComponent<Collider2D>() as BoxCollider2D;
+		BoxCollider2D boxCollider = playerTwo.GetComponent<Collider2D>() as BoxCollider2D;
 
 		punching = true;
-		b.size = new Vector2(1f, 0.6644267f);
+		boxCollider.size = new Vector2(1f, 0.6644267f);
 		animator.SetTrigger(firstTrigger);
 
 		yield return new WaitForSeconds(0.5f);
 		
 		punching = false;
 		animator.SetTrigger(secondTrigger);
-		b.size = new Vector2(0.5150453f, 0.6644267f);
+		boxCollider.size = new Vector2(0.5150453f, 0.6644267f);
 	}
 
 	void Quit()
