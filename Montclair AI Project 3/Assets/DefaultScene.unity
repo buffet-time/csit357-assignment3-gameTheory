@@ -228,6 +228,7 @@ GameObject:
   - component: {fileID: 284193337}
   - component: {fileID: 284193338}
   - component: {fileID: 284193339}
+  - component: {fileID: 284193340}
   m_Layer: 8
   m_Name: PlayerOne
   m_TagString: PlayerOne
@@ -357,6 +358,23 @@ MonoBehaviour:
   player: {fileID: 202547265}
   playerOne: {fileID: 284193334}
   winner: {fileID: 1930813275}
+--- !u!95 &284193340
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 284193334}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 77aadaaeabb582741a9ab0143272f6e8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &314621546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,6 +1173,7 @@ GameObject:
   - component: {fileID: 2130326882}
   - component: {fileID: 2130326881}
   - component: {fileID: 2130326884}
+  - component: {fileID: 2130326885}
   m_Layer: 9
   m_Name: PlayerTwo
   m_TagString: PlayerTwo
@@ -1284,6 +1303,23 @@ MonoBehaviour:
   player: {fileID: 202547265}
   playerTwo: {fileID: 2130326879}
   winner: {fileID: 1930813275}
+--- !u!95 &2130326885
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2130326879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e34170b1bfa6144893badcf114b39fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &2138370374
 GameObject:
   m_ObjectHideFlags: 0

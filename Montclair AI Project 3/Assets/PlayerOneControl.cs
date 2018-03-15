@@ -17,12 +17,14 @@ public class PlayerOneControl : MonoBehaviour
 	public GameObject playerOne;
 	private PlayerTwoControl playerTwoControl;
 	public Text winner;
+	private Animator animator;
 
 	void Start()
 	{
 		health = (int) Random.Range(1.0f, 99.0f);
 		rigidBody = GetComponent<Rigidbody2D>();
         jump = new Vector3(0.0f, 2.0f, 0.0f);
+        animator = gameObject.GetComponent<Animator>();
 	}
 
 	void OnCollisionEnter2D(Collision2D collision)
@@ -59,26 +61,26 @@ public class PlayerOneControl : MonoBehaviour
 		}
         if (!punching && Input.GetKeyDown(KeyCode.Z)) 
 		{
-			// start punch animation here
-        	StartCoroutine(Punch());
+        	StartCoroutine(Attack("IdleToPunchAnimation", "PunchAnimationToIdle"));
         }
         if (!punching && Input.GetKeyDown(KeyCode.X)) 
 		{
-			// start kick animation here
-        	StartCoroutine(Punch());
+        	StartCoroutine(Attack("IdleToKickAnimation", "KickAnimationToIdle"));
         }
 	}
 
-	IEnumerator Punch() 
+	IEnumerator Attack(string firstTrigger, string secondTrigger) 
 	{
 		BoxCollider2D b = playerOne.GetComponent<Collider2D>() as BoxCollider2D;
 
 		punching = true;
 		b.size = new Vector2(1f, 0.6644267f);
+		animator.SetTrigger(firstTrigger);
 
-		yield return new WaitForSeconds(0.1f);
+		yield return new WaitForSeconds(0.5f);
 		
 		punching = false;
+		animator.SetTrigger(secondTrigger);
 		b.size = new Vector2(0.5150453f, 0.6644267f);
 	}
 
