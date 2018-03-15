@@ -16,6 +16,7 @@ public class PlayerOneControl : MonoBehaviour
 	public GameObject player;
 	public GameObject playerOne;
 	private PlayerTwoControl playerTwoControl;
+	public Text winner;
 
 	void Start()
 	{
@@ -37,7 +38,7 @@ public class PlayerOneControl : MonoBehaviour
 	{
 		if (health <= 0)
 		{
-			StartCoroutine(Quit());
+			Quit();
 		}
 		if (transform.position.y < -1.8)
 		{
@@ -81,28 +82,21 @@ public class PlayerOneControl : MonoBehaviour
 		b.size = new Vector2(0.5150453f, 0.6644267f);
 	}
 
-	IEnumerator Quit()
+	void Quit()
 	{
-		// add ui element that say player 1 won
-		float random = Random.Range(0f, 10.0f);
-		if ( random <= 5f)
+		float random = Random.Range(0.0f, 10.0f);
+		
+		if ( random <= 5.0f)
 		{
-			//oneWon.enabled = true;
+			winner.text = "PLAYER ONE WINS!";
+
+			Time.timeScale = 0f;
 		}
-		else 
+		else
 		{
-			//twoWon.enabled = true;
+			winner.text = "PLAYER TWO WINS!";
+
+			Time.timeScale = 0f;
 		}
-
-		yield return new WaitForSeconds(5f);
-
-		// quit
-		#if UNITY_EDITOR
-			UnityEditor.EditorApplication.isPlaying = false;
-
-		#else 
-			Application.Quit();
-
-		#endif
 	}
 }

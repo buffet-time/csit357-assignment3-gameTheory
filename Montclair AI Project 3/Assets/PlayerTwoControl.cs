@@ -16,6 +16,7 @@ public class PlayerTwoControl : MonoBehaviour
 	public GameObject player;
 	public GameObject playerTwo;
 	private PlayerOneControl playerOneControl;
+	public Text winner;
 
 	void Start()
 	{
@@ -83,31 +84,19 @@ public class PlayerTwoControl : MonoBehaviour
 
 	void Quit()
 	{
-		float random = Random.Range(0.1f, 10.0f);
+		float random = Random.Range(0.0f, 10.0f);
 		
-		if ( random <= 5.1f)
+		if ( random <= 5.0f)
 		{
-			print("Player One Won");
+			winner.text = "PLAYER ONE WINS!";
 
-			#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false;
-
-			#else 
-				Application.Quit();
-
-			#endif
+			Time.timeScale = 0f;
 		}
 		else
 		{
-			print("Player Two Won");
+			winner.text = "PLAYER TWO WINS!";
 
-			#if UNITY_EDITOR
-				UnityEditor.EditorApplication.isPlaying = false;
-
-			#else 
-				Application.Quit();
-
-			#endif
+			Time.timeScale = 0f;
 		}
 	}
 }
